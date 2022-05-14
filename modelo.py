@@ -62,37 +62,28 @@ else:
     media = 2.4841
 
     
-for i in range(5):
-    if i < numTaqAbiertas:
-        tiempoAtencion.append(generarVariableAleatoria(media, desv))
-    else:
-        tiempoAtencion.append(-1)
+for i in range(numTaqAbiertas):
+    tiempoAtencion.append(generarVariableAleatoria(media, desv))
     taquillaLibre.append(False)
     tiempoCaja.append(0)
     personasAtendidas.append(0)
 
 tiempoSimulacion = 0
-index = 0
 delta = 0
 while tiempoSimulacion < TLimite:
-    for i in range(5):
-        if taquillaLibre[i] and i < numTaqAbiertas:
+    for i in range(numTaqAbiertas):
+        if taquillaLibre[i]:
             taquillaLibre[i] = False
             tiempoAtencion[i] = generarVariableAleatoria(media, desv)
     
     taqAbiertas = []
-    for i in range(5):
-        
-        if i < numTaqAbiertas:
-            taqAbiertas.append(tiempoAtencion[i])
-        if i == 4:
+    for i in range(numTaqAbiertas):
+        taqAbiertas.append(tiempoAtencion[i])
+        if i == numTaqAbiertas - 1:
             delta = min(taqAbiertas)
 
-    for i in range(5):
-        if i < numTaqAbiertas:
-            tiempoAtencion[i] = tiempoAtencion[i] - delta
-
-    for i in range(5):
+    for i in range(numTaqAbiertas):
+        tiempoAtencion[i] -= delta
         if tiempoAtencion[i] == 0:
             personasAtendidas[i] += 1
             tiempoSimulacion += delta
@@ -100,12 +91,12 @@ while tiempoSimulacion < TLimite:
             tiempoCaja[i] += delta
 
 totalPersonasAtendidas = 0
-for i in range(5):
-    if i < numTaqAbiertas:
-        totalPersonasAtendidas += personasAtendidas[i]
-        tiempoPromedio.append(tiempoCaja[i] / personasAtendidas[i])
-        print(f"Tiempo promedio de la caja {i + 1}: {tiempoPromedio[i]}")
-        print(f"Personas atendidas en la caja {i + 1}: {personasAtendidas[i]}")
-        print("\n")
+for i in range(numTaqAbiertas):
+
+    totalPersonasAtendidas += personasAtendidas[i]
+    tiempoPromedio.append(tiempoCaja[i] / personasAtendidas[i])
+    print(f"Tiempo promedio de la caja {i + 1}: {tiempoPromedio[i]}")
+    print(f"Personas atendidas en la caja {i + 1}: {personasAtendidas[i]}")
+    print("\n")
 print(f"Tiempo simulado en minutos: {TLimite}")
 print(f"Total de personas atendidas: {totalPersonasAtendidas}")

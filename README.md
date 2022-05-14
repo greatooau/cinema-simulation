@@ -1,1 +1,1 @@
-"# cinema-simulation" 
+# cinema-simulation
