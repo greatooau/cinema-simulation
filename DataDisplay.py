@@ -21,7 +21,7 @@ def showResults(taquillas, premiere, tiempoLimite, totalPersonas, infoT):
 
     results_label = Label(window)
     results_label.configure(
-        anchor="nw", font="{Cambria} 16 {}", text="Resultados"+estreno, width="100"
+        anchor="nw", font="{Cambria} 16 {}", text=f"Resultados "+estreno, width="100"
     )
     results_label.place(anchor="nw", x="50", y="10")
 
