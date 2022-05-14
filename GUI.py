@@ -8,10 +8,10 @@ def sendData():
     taquillas = int(NumTaquillas.get())
     premiere = int(Premiere.get())
     results = modelo.simular(minutes, taquillas, premiere)
-    dataD.showResults(results['taquillas_abiertas'], results['premiere'], results['tiempo_limite'], results['total_personas'], results['infoToSubmit'])
     time_entry.delete(0, END)
     NumTaquillas.set(0)
     Premiere.set(0)
+    dataD.showResults(results['taquillas_abiertas'], results['premiere'], results['tiempo_limite'], results['total_personas'], results['infoToSubmit'])
 
 
 window = Tk()
