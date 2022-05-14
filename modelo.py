@@ -76,11 +76,7 @@ while tiempoSimulacion < TLimite:
             taquillaLibre[i] = False
             tiempoAtencion[i] = generarVariableAleatoria(media, desv)
     
-    taqAbiertas = []
-    for i in range(numTaqAbiertas):
-        taqAbiertas.append(tiempoAtencion[i])
-        if i == numTaqAbiertas - 1:
-            delta = min(taqAbiertas)
+    delta = min(tiempoAtencion)
 
     for i in range(numTaqAbiertas):
         tiempoAtencion[i] -= delta
